@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  app:
+    image: jpelczar/examhelperserver
+    ports:
+    - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: sameersbn/mysql
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3306"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+    ports:
+     - "3306:3306"
