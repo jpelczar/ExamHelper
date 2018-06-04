@@ -1,7 +1,7 @@
 buildscript {
     ext {
         kotlinVersion = '1.1.3'
-        springBootVersion = '1.5.3.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -33,6 +33,9 @@ compileTestKotlin {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-release'
+    }
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
@@ -51,11 +54,17 @@ task buildDocker(type: Docker, dependsOn: build) {
 }
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
-    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-    compile("com.h2database:h2")
-    compile('mysql:mysql-connector-java')
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile('org.springframework.boot:spring-boot-starter-groovy-templates')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    def h2Version = "1.4.197"
+    def mysqlConnectorVersion = "8.0.11"
+    def elasticsearchVersion = "3.0.7.RELEASE"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+    implementation "com.h2database:h2:${h2Version}"
+    implementation "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
+    implementation "org.springframework.data:spring-data-elasticsearch:${elasticsearchVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }

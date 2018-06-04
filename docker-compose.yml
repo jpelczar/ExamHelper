@@ -16,3 +16,8 @@ services:
       retries: 5
     ports:
      - "3306:3306"
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
