@@ -1,4 +1,4 @@
-package io.jpelczar.examhelper.configuration
+package io.jpelczar.examhelper.repository
 
 import org.elasticsearch.client.Client
 import org.elasticsearch.common.settings.Settings

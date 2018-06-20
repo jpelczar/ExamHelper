@@ -57,6 +57,7 @@ dependencies {
     def h2Version = "1.4.197"
     def mysqlConnectorVersion = "8.0.11"
     def elasticsearchVersion = "3.0.7.RELEASE"
+    def thymeleafExtrasVersion = "3.0.2.RELEASE"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
     implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
@@ -64,7 +65,10 @@ dependencies {
     implementation "mysql:mysql-connector-java:${mysqlConnectorVersion}"
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
     implementation "org.springframework.data:spring-data-elasticsearch:${elasticsearchVersion}"
+    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity4:${thymeleafExtrasVersion}"
+
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
