@@ -4,7 +4,7 @@ import io.jpelczar.examhelper.user.Role
 import javax.persistence.*
 
 @Entity
-class UserEntity {
+class UserEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ class UserEntity {
     @Enumerated(EnumType.STRING)
     var roles: MutableSet<Role> = mutableSetOf()
 
-    constructor(name: String, password: String, enabled: Boolean, roles: MutableSet<Role>) {
+    constructor(name: String, password: String, enabled: Boolean, roles: MutableSet<Role>) : this() {
         this.name = name
         this.password = password
         this.enabled = enabled
