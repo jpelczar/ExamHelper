@@ -10,7 +10,7 @@ class OpenController {
     fun index(): String = "redirect:/home"
 
     @GetMapping("/home")
-    fun home(): String = "/home"
+    fun home(): String = "home"
 
 
 

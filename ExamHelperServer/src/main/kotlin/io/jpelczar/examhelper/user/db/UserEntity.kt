@@ -13,7 +13,7 @@ class UserEntity() {
     var password = ""
     var enabled = false
 
-    @ElementCollection(targetClass = Role::class)
+    @ElementCollection(targetClass = Role::class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles")
     @Enumerated(EnumType.STRING)
     var roles: MutableSet<Role> = mutableSetOf()

@@ -26,9 +26,9 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
 
         http.authorizeRequests()
-                .antMatchers("/", "/home", "/about", "/h2-console").permitAll()
-                .antMatchers("/admin/**").hasAnyRole(Role.ADMIN.toString())
-                .antMatchers("/student/**").hasAnyRole(Role.STUDENT.toString())
+                .antMatchers("/", "/home", "/about", "/h2-console/**").permitAll()
+                .antMatchers("/admin/**").hasAnyAuthority(Role.ADMIN.toString())
+                .antMatchers("/student/**").hasAnyAuthority(Role.STUDENT.toString())
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
